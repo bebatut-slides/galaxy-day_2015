@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>ASaiM (Auvergne Sequence Analysis of Intestinal Microbiota) | November 19th 2015 | Bérénice Batut</title>
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+		<link rel="stylesheet" href="css/custom.css" id="theme">
+
+		<!-- Printing and PDF exports -->
+        <script>
+          if( window.location.search.match( /print-pdf/gi ) ) {
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = 'reveal.js/css/print/pdf.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+          }
+        </script>
+		<!--<script>
+            if (window.location.search.match(/print-pdf/gi)) {
+                document.write('<link rel="stylesheet" href="css/pdf.css" type="text/css">');
+            }
+        </script>-->
+
+		<!--[if lt IE 9]>
+        <script src="reveal.js/lib/js/html5shiv.js"></script>
+        <![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1 class="title">ASaiM</h1>
+					<em class="subtitle"><i>A Galaxy framework to analyze gut microbiota data</i></em>
+                    <br/>
+
+					<img src="images/asaim_logo.svg" alt="ASaiM logo" class="no-border" width=500/>
+					<br/>
+                    <br/>
+
+	                <em class="subtitle">Bérénice Batut &mdash; EA CIDAM, Clermont-Ferrand </em>
+                    <br/>
+                    <em class="subtitle">November 19th, 2015 </em>
+				</section>
+
+                <section>
+                    <section data-markdown>
+                        # Context
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Gut microbiota
+                            <img src="images/microbiome_bottom.gif" alt="Gut microbiota" class="no-border" width=800/>
+                            </br>
+                            <small>*Community of microorganism species that live in the digestive tracts*</small>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        ### Importance of gut microbiota
+                        "Forgotten" organ
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Metagenomic / Metatranscriptomic
+                        <br/>
+                        <img src="images/metagenomics.png" alt="Metagenomics" class="no-border"/>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        ### Comparative meta-omic
+
+                        Study of microbiota in its globality
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        <img src="images/li2014_figure4c.png" alt="Figure 4C of Li et al (2014)" class="no-border" height=600/>
+                        <br/>
+                        <small>*Figure 4C - Li et al, Nat Biotech, 2014*</small>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        ### Comparative meta-omic of different projects 
+                        ### for a global view?
+                    </section>
+
+                    <section data-markdown>
+                        ### Public data repository: source of information
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### European Nucleotide Archive
+
+                        "human gut metagenome" search: 
+
+                        * 236 studies
+                        * 1,545 runs, ...
+
+                        <i class="fa fa-info-circle"></i> Dispersed and uncomparable information
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Need to collect and format datasets with similar workflow
+                        <img src="images/simplified_workflow.svg" alt="Simplified_workflow" class="no-border"/>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Possible tools
+
+                        <small>*QIIME, MG-RAST, EBI metagenomics, MetAMOS, ...*</small>
+
+                        But none follows all the requirements:
+
+                        - Can analyze datasets with a complete workflow
+                        - Allow gut microbiota specific databases
+                        - Combine user-friendly interface and command-line use
+                        - Have data management capabilities
+                        </script>
+                    </section>
+
+                </section>
+
+                <section>
+    				<section data-markdown>
+                        <script type="text/template">
+                        # ASaiM
+
+                        <small>*Auvergne Sequence analysis of intestinal Microbiota*</small>
+
+                        An environment to analyze metagenomic and metatranscriptomic sequences from gut microbiota
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Components
+
+                        * Expert database
+                        * Web interface 
+                        * Framework
+                        </script>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        # ASaiM framework
+
+                        Bioinformatics framework to generate workflows 
+                        to analyze data from gut microbiota
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Main constraints
+
+                            <ul class="requirements">
+                                <li>
+                                    <p><i class="fa fa-square-o"></i> Generation of workflow with numerous tools</p>
+                                    <p><i class="fa fa-square-o"></i> Easy to use</p>
+                                    <p><i class="fa fa-square-o"></i> Flexibility</p>
+                                    <p><i class="fa fa-square-o"></i> Use of wanted/needed tools and databases </p>
+                                </li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        ### Tests of conception
+
+                        * Simple Python scripts
+                        * Worflow managers such as Luigi, Airflow, ...
+                        * Homemade approach
+                            * Configuration file
+                                * Workflow description
+                                * Web interface for generation 
+                            * Python scripts to execute workflow
+                        * Galaxy instance    
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Galaxy
+
+                            Fit with main constraints
+
+                            <ul class="requirements">
+                                <li>
+                                    <p><i class="fa fa-check-square-o"></i> Generation of workflow with numerous tools</p>
+                                    <p><i class="fa fa-check-square-o"></i> Easy to use</p>
+                                    <p><i class="fa fa-check-square-o"></i> Flexibility</p>
+                                    <p><i class="fa fa-check-square-o"></i> Use of wanted/needed tools and databases
+                                </li>
+                            </ul>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### ASaiM Galaxy instance
+
+                        <img src="images/galaxy_instance.png" alt="ASaiM Galaxy instance" class="no-border" />
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Tools
+
+                        * Wrappers from standard Galaxy instance
+
+                        * Wrappers from ToolShed: *Vsearch, CD-hit, NCBI BLAST+, Diamond, MetaPhlAn, QIIME*
+
+                        * Developed wrappers
+                            * Misc
+                            * Integrated to the test Tool Shed: *SortMeRNA*
+                            * To integrate to the test Tool Shed: *FastQ-Join, MetaPhlAn 2, PRINSEQ, Framebot, Reago, HUMAnN*
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Workflows
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Databases
+
+                        * SortMeRNA ribosomal databases
+                        * COG
+                        * *RefSeq*
+                        * *Catalog of reference genes in the human gut microbiome from Li et al (2014)*
+                        * *Greengenes*
+                        
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        ### To launch the instance
+
+                        * Get the code source from [Github](https://github.com/ASaiM/framework)
+                        ```
+                        $ git clone git@github.com:ASaiM/framework.git 
+                        ```
+                        * Install the required tools found in README file
+                        * Launch the interface
+                        ```
+                        $ cd framework
+                        $ ./scripts/launch_galaxy.sh
+                        ```
+                        * Visualize it: [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+                    </section>
+
+                    <section data-markdown>
+                        ### Behind
+
+                        Shell scripts to configure the instance
+
+                        * Clone Galaxy github using submodule
+                        * Prepare databases and local tools
+                        * Link with symbolic links to local configuration files and tools
+                        * Configure ftp? API keys?
+                        * Ansible to retrive tools from ToolShed? 
+                        * Import workflows?
+                        * Launch Galaxy
+                    </section>
+
+                    <section data-markdown>
+                        ### To do
+
+                        * Add other tools, databases, workflows
+                        * Validate workflows on datasets (local, mock, ...)
+                        * Integrate tools and workflows to the ToolShed
+                        * Configure FTP
+                        * API and BioBlend
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### Documentation
+
+                        <img src="images/asaim_readthedoc.png" alt="Framework documentation" class="no-border" height=500 />
+                        <br/>
+                        <small><a href="http://asaim.readthedocs.org/">http://asaim.readthedocs.org/</a></small>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                        ### <i class="fa fa-github"></i> Github
+                        
+                        * ASaiM Projet
+
+                            [https://github.com/ASaiM](https://github.com/ASaiM)
+                        * Framework
+
+                            [https://github.com/ASaiM/framework](https://github.com/ASaiM/framework)
+                        * Tool wrappers for the ToolShed
+
+                            [https://github.com/ASaiM/galaxytools](https://github.com/ASaiM/galaxytools)
+                        </script>
+                    </section>    
+                </section>
+
+                <section>
+                    <img src="images/CPER.png" alt="CPER" class="no-border"/>
+                </section>
+
+                <section data-markdown>
+                    <script type="text/template">
+                        ## Thank You.
+
+                        ### Questions?
+
+                        <br>
+                        <ul class="me">
+                            <li>
+                                <p><i class="fa fa-globe"></i><a href="http://bebatut.fr" title="website">bebatut.fr</a></p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-github"></i><a href="https://github.com/bebatut" title="github">github.com/bebatut</a></p>
+                            </li>
+                            <li>
+                                <p><i class="fa fa-twitter"></i><a href="https://twitter.com/bebatut" title="twitter">twitter.com/bebatut</a></p>
+                            </li>
+                        </ul>
+                    </script>
+                </section>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="reveal.js/lib/js/head.min.js"></script>
+        <script type="text/javascript" src="reveal.js/js/reveal.js"></script>
+        <script type="text/javascript">
+            Reveal.initialize({
+                slideNumber: !window.location.search.match(/print-pdf/gi),
+                history: true,
+
+                theme: Reveal.getQueryHash().theme,
+                transition: Reveal.getQueryHash().transition || 'concave',
+
+                dependencies: [
+                    { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                ]
+            });
+        </script>
+
+	</body>
+</html>
