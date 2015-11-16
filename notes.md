@@ -5,38 +5,53 @@ Presentation notes
 
 ASaiM: a Galaxy framework to analyze gut microbiota
 
-Good morning, I'm Bérénice and I'm currently in post-doc.
+Good morning, I'm Bérénice and I'm currently in post-doc in Clermont-Ferrand.
 I'm working on ASaiM: an environment to analyze gut microbiota
 
 # Context
 
-Before presenting ASaiM, I'll talk about the biological context: gut microbiota
+Before presenting ASaiM, I'll talk about the biological context of the project: the gut microbiota
     
-## What is gut microbiota? Why studing it?
+## Gut microbiota
 
-Gut microbiota: micro-organisms living in the gut
+### What is it? 
+
+Gut microbiota: numerous micro-organisms living in the gut
+
+### Why studing it?
+
 Seen as a forgotten organ
 Important role in digestive tract
-Disorder of gut microbiota related to several diseases (Chrone disease, obesity,
- cow??)
+Disorder of gut microbiota related to several diseases (Chrone disease, obesity)
 Importance to understand gut microbiota in health and also in agronomy?
 
-## How to study it?
+## Study
 
-Advance in sequencing --> metagenomic, metatranscriptomic
-    + bioinformatics treatments for taxonomic and functional assignations
+### Meta-omic
 
-On single datasets : many tools available
-    QIIME, IMG/M, MG-Rast, EBI metagenomics, ...
+Advance in sequencing --> metagenomic, metatranscriptomic of a sample of these 
+micro-organisms
 
-Comparative approaches of several datasets to compare several datasets
-    Examples?
+Sequencing of genetic material without any organism culture, without information
+about organisms
 
-But something more global: comparison of datasets from different projects
+Bioinformatics treatments for taxonomic and functional assignations and then 
+determine which organisms are present in a gut sample, what are they doing and how
 
-## Available data
+### Comparative meta-omics of different samples
 
-Massive sequencing data available in public data repositories
+To understand how microbiota is working, need to compare several samples with 
+comparative approaches 
+
+Li et al 2014: Comparison of the relative abundance of several taxons in 2 populations
+(chinese and danish) --> difference in gut microbiota given the country, the diet...
+
+### Comparative meta-omics of different samples from different projects
+
+For a global view, need to compare different samples from different projects...
+
+Massive sequencing data are available but not exploited in public data repository 
+such as ENA, NCBI, ...
     
 Exemple: ENA, Search for "human gut metagenome"
 
@@ -49,7 +64,7 @@ Exemple: ENA, Search for "human gut metagenome"
     - different metadata
     - ...
 
-To compare different study: information from these datasets have to be collected
+To compare different studies/projects: information from these datasets have to be collected
 and formatted using a similar workflow based on specific gut microbiota db
 
 1. Quality control
@@ -58,13 +73,9 @@ and formatted using a similar workflow based on specific gut microbiota db
 4. Taxonomic analysis
 5. Comparative analysis
 
-## Available tools
+Several tools: QIIME, Megan, CAMERA, EBI metagenomics, CloVR-metagenomics, ...
 
-To format data and make them informative and standardized
-
-several tools: QIIME, Megan, CAMERA, EBI metagenomics, CloVR-metagenomics, ...
-
-But none follow all the requirements:
+But none of them follows all the requirements:
 
 - Complete analytical workflow
 - Allow gut microbiota specific datases
@@ -73,79 +84,110 @@ But none follow all the requirements:
 
 # ASaiM
 
-Auvergne Sequence analysis of intestinal Microbiota
-
-An environment to analyze metagenomic and metatranscriptmic sequences from gut 
-microbiota
+We are developping ASaiM: An environment to analyze metagenomic and metatranscriptomic 
+sequences from gut microbiota
 
 ## Components
 
-- Database 
+- Database to take a census of gut microbiota data 
 - Web interface to interrogate the database
 - Framework
 
 # Framework
 
-## Objective
+The gut microbiota data are analyzed using several steps. Each of these steps
+corresponds to a tool.
 
-Bionformatics framework to generate workflow to analyze data from gut microbiota
+For example, gut metatranscriptomic data must follow a workflow corresponding to
+the one in the example
+
+Need to interface the tools together to automize the analyses
+
+ASaiM framework: Bionformatics framework to generate workflow for analyses of 
+gut microbiota data
 
 ## Constraints
 
-- Generation of workflow with numerous tools
-- Easy to use
-- Flexibility
-- Use of wanted/needed tools and databases
+- Generation of workflow for analyses using numerous tools, each for a dedicated task
+- Easy use (by biologist and on numerous datasets)
+- Flexibility and modularity (in tool and parameters)
+- Incorporation of wanted/needed tools and databases (specific to gut data)
 
 ## Conception
 
 Several tests
 
-- Simple scripts
-- Workflow managers (Airflow, ...)
+- Simple Python scripts to interface several tools
+- Workflow managers (Airflow, ...) to generate workflow based on task dependencies
 - Home-made solution
-- Galaxy
+    - a configuration to describe the workflow
+    - configuration file generated using a web interface
+    - python scripts to execute workflow
+    - home-made solution is not a good solution (to develop, to maintain, ...)
+- Galaxy instance
 
 Choice of Galaxy
 
 Fit with main constraints
 
 - Generation of workflow with numerous tools
+    - Galaxy wrappers : as many tools as we want to develop wrappers 
     - Workflow conception based on output/input dependencies
 - Easy to use
     - Web-based interface and API 
-- Flexibility
-- Use of wanted/needed tools and databases
-    - ToolShed 
+- Flexibility and modularity
+- Incorporation of wanted/needed tools and databases
+    - ToolShed
+    - wrappers : as many tools as we want to develop wrappers 
 
 ## Galaxy instance
 
-Tools
+Instance based on standard Galaxy but with only "usefull" tools sorted given their
+use for microbiota data
 
-- From local instance
-    - 
+Instance available on Github
+
+To launch:
+    - clone
+    - install the required tools such as pip
+    - lauch the instance using a dedicated script
+    - visualize it
+
+Behind the launch_galaxy.sh script: shell script to configure the instance
+
+## Choices
+
+In the instance, the tools are coming from
+
+- From standard Galaxy instance
 - From ToolShed
-    - 
 - Developed wrappers
+    - Misc to manipulate sequence files for example
     - Integrated in the test Tool Shed
-    - 
+    - In development
 
-Databases
+Workflows: currently in construction given the tool integration
 
-Workflows
+Databases (automatically integrated)
 
+- SortMeRNA
+- COG
+- To add
 
-(in red, those to integrate)
-
+To help in tools, database, workflow, ... we write a documentation available
+with readthedocs
+I'm trying to write the doc during development
 
 ## To do
 
-- Add other tools, databases, workflows
-- Configure FTP
-- Validation
-- API and BioBlend
+Use of Galaxy helps the development of this instance.
 
-## Documentation and GitHub
+But, there is several things to do
+
+- Add other tools, databases, workflows
+- Validate workflows
+- Configure FTP
+- API and BioBlend
 
 # Conclusion
 
