@@ -98,11 +98,14 @@
 
                     <section data-markdown>
                         ### Comparative meta-omic of different projects 
-                        ### for a global view?
+
+                        For a global view?
                     </section>
 
                     <section data-markdown>
-                        ### Public data repository: source of information
+                        ### Public data repository
+
+                        Source of information
                     </section>
 
                     <section data-markdown>
@@ -120,7 +123,11 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                        ### Need to collect and format datasets with similar workflow
+                        ### Need to 
+
+                        - collect datasets
+                        - analyze them given a standard workflow
+
                         <img src="images/simplified_workflow.svg" alt="Simplified_workflow" class="no-border"/>
                         </script>
                     </section>
@@ -131,12 +138,14 @@
 
                         <small>*QIIME, MG-RAST, EBI metagenomics, MetAMOS, ...*</small>
 
-                        But none follows all the requirements:
+                        But none of them follows all the requirements:
 
-                        - Can analyze datasets with a complete workflow
-                        - Allow gut microbiota specific databases
-                        - Combine user-friendly interface and command-line use
-                        - Have data management capabilities
+                        <ul>
+                            <li class="fragment" data-fragment-index="0">Can analyze datasets with a complete workflow</li>
+                            <li class="fragment" data-fragment-index="1">Allow gut microbiota specific databases</li>
+                            <li class="fragment" data-fragment-index="2">Combine user-friendly interface and command-line use</li>
+                            <li class="fragment" data-fragment-index="3">Have data management capabilities</li>
+                        </ul>
                         </script>
                     </section>
 
@@ -166,11 +175,15 @@
                 </section>
 
                 <section>
+                    <section>
+                        <img src="images/standard_workflow.svg" alt="Workflow" class="no-border"/>
+                    </section>
+
                     <section data-markdown>
                         # ASaiM framework
 
-                        Bioinformatics framework to generate workflows 
-                        to analyze data from gut microbiota
+                        Bioinformatics framework to generate workflows for analyses
+                        of gut microbiota data
                     </section>
 
                     <section data-markdown>
@@ -180,25 +193,34 @@
                             <ul class="requirements">
                                 <li>
                                     <p><i class="fa fa-square-o"></i> Generation of workflow with numerous tools</p>
-                                    <p><i class="fa fa-square-o"></i> Easy to use</p>
-                                    <p><i class="fa fa-square-o"></i> Flexibility</p>
-                                    <p><i class="fa fa-square-o"></i> Use of wanted/needed tools and databases </p>
+                                    <p><i class="fa fa-square-o"></i> Easy use</p>
+                                    <p><i class="fa fa-square-o"></i> Flexibility and modularity</p>
+                                    <p><i class="fa fa-square-o"></i> Incorporation of wanted/needed tools and databases </p>
                                 </li>
                             </ul>
                         </script>
                     </section>
 
                     <section data-markdown>
+                        <script type="text/template">
                         ### Tests of conception
 
-                        * Simple Python scripts
-                        * Worflow managers such as Luigi, Airflow, ...
-                        * Homemade approach
-                            * Configuration file
-                                * Workflow description
-                                * Web interface for generation 
-                            * Python scripts to execute workflow
-                        * Galaxy instance    
+                        <ul>
+                        <li class="fragment" data-fragment-index="0">Simple Python scripts</li>
+                        <li class="fragment" data-fragment-index="1">Worflow managers such as Luigi, Airflow, ...</li>
+                        <li class="fragment" data-fragment-index="2">Homemade approach
+                            <ul>
+                            <li class="fragment" data-fragment-index="2">Configuration file</li>
+                                <ul>
+                                <li class="fragment" data-fragment-index="2">Workflow description
+                                <li class="fragment" data-fragment-index="2">Web interface for generation 
+                                </ul>
+                            <li class="fragment" data-fragment-index="2">Python scripts to execute workflow</li>
+                            </ul>
+                        </li>
+                        <li class="fragment" data-fragment-index="3">Galaxy instance </li>
+                        </ul>
+                        </script> 
                     </section>
 
                     <section data-markdown>
@@ -210,9 +232,9 @@
                             <ul class="requirements">
                                 <li>
                                     <p><i class="fa fa-check-square-o"></i> Generation of workflow with numerous tools</p>
-                                    <p><i class="fa fa-check-square-o"></i> Easy to use</p>
-                                    <p><i class="fa fa-check-square-o"></i> Flexibility</p>
-                                    <p><i class="fa fa-check-square-o"></i> Use of wanted/needed tools and databases
+                                    <p><i class="fa fa-check-square-o"></i> Easy use</p>
+                                    <p><i class="fa fa-check-square-o"></i> Flexibility and modularity</p>
+                                    <p><i class="fa fa-check-square-o"></i> Incorporation of wanted/needed tools and databases
                                 </li>
                             </ul>
                         </script>
@@ -227,17 +249,48 @@
                     </section>
 
                     <section data-markdown>
+                        ### To launch the instance
+
+                        * Get the code source from [Github](https://github.com/ASaiM/framework)
+                        ```
+                        $ git clone git@github.com:ASaiM/framework.git 
+                        ```
+                        * Install the required tools found in README file
+                        * Launch the instance
+                        ```
+                        $ cd framework
+                        $ ./src/launch_galaxy.sh
+                        ```
+                        * Visualize it on [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+                    </section>
+
+                    <section data-markdown>
+                        ### Behind
+
+                        Shell scripts to configure the instance
+
+                        * Get latest revision of Galaxy from Github  
+
+                        * Prepare databases and local tools
+
+                        * Link with symbolic links to 
+                            * Local configuration files
+                            * Tool files
+                            * Tool data
+
+                        * Launch Galaxy
+                    </section>
+
+                    <section data-markdown>
                         <script type="text/template">
                         ### Tools
 
-                        * Wrappers from standard Galaxy instance
+                        * From standard Galaxy instance
 
-                        * Wrappers from ToolShed: *Vsearch, CD-hit, NCBI BLAST+, Diamond, MetaPhlAn, QIIME*
+                        * From ToolShed
 
-                        * Developed wrappers
-                            * Misc
-                            * Integrated to the test Tool Shed: *SortMeRNA*
-                            * To integrate to the test Tool Shed: *FastQ-Join, MetaPhlAn 2, PRINSEQ, Framebot, Reago, HUMAnN*
+                        * Developed wrappers using Planemo and integrated in test Tool Shed
+                            * [https://github.com/ASaiM/galaxytools](https://github.com/ASaiM/galaxytools)
                         </script>
                     </section>
 
@@ -261,46 +314,6 @@
                     </section>
 
                     <section data-markdown>
-                        ### To launch the instance
-
-                        * Get the code source from [Github](https://github.com/ASaiM/framework)
-                        ```
-                        $ git clone git@github.com:ASaiM/framework.git 
-                        ```
-                        * Install the required tools found in README file
-                        * Launch the interface
-                        ```
-                        $ cd framework
-                        $ ./scripts/launch_galaxy.sh
-                        ```
-                        * Visualize it: [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
-                    </section>
-
-                    <section data-markdown>
-                        ### Behind
-
-                        Shell scripts to configure the instance
-
-                        * Clone Galaxy github using submodule
-                        * Prepare databases and local tools
-                        * Link with symbolic links to local configuration files and tools
-                        * Configure ftp? API keys?
-                        * Ansible to retrive tools from ToolShed? 
-                        * Import workflows?
-                        * Launch Galaxy
-                    </section>
-
-                    <section data-markdown>
-                        ### To do
-
-                        * Add other tools, databases, workflows
-                        * Validate workflows on datasets (local, mock, ...)
-                        * Integrate tools and workflows to the ToolShed
-                        * Configure FTP
-                        * API and BioBlend
-                    </section>
-
-                    <section data-markdown>
                         <script type="text/template">
                         ### Documentation
 
@@ -312,17 +325,19 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                        ### <i class="fa fa-github"></i> Github
-                        
-                        * ASaiM Projet
+                        ### To do
 
-                            [https://github.com/ASaiM](https://github.com/ASaiM)
-                        * Framework
-
-                            [https://github.com/ASaiM/framework](https://github.com/ASaiM/framework)
-                        * Tool wrappers for the ToolShed
-
-                            [https://github.com/ASaiM/galaxytools](https://github.com/ASaiM/galaxytools)
+                        <ul class="requirements">
+                            <li>
+                                <p><i class="fa fa-minus-square-o"></i> Add tools in development, databases, workflows</p>
+                                <p><i class="fa fa-square-o"></i> Validate workflows on datasets (local, mock, ...)</p>
+                                <p><i class="fa fa-minus-square-o"></i> Integrate tools and workflows to the ToolShed</p>
+                                <p><i class="fa fa-minus-square-o"></i> Automatize tool integration from ToolShed </p>
+                                <p><i class="fa fa-square-o"></i> Configure FTP </p>
+                                <p><i class="fa fa-square-o"></i> Use API and BioBlend </p>
+                                <p><i class="fa fa-minus-square-o"></i> Complete the documentation </p>
+                            </li>
+                        </ul>
                         </script>
                     </section>    
                 </section>
@@ -364,12 +379,14 @@
 
                 theme: Reveal.getQueryHash().theme,
                 transition: Reveal.getQueryHash().transition || 'concave',
+                showNotes: false,
 
                 dependencies: [
                     { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
                     { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
                     { src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/notes/notes.js', async: true },
                 ]
             });
         </script>
