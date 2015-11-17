@@ -11,7 +11,7 @@
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
-        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="Font-Awesome/css/font-awesome.min.css">
 
 		<link rel="stylesheet" href="css/custom.css" id="theme">
 
@@ -117,16 +117,16 @@
                         * 236 studies
                         * 1,545 runs, ...
 
-                        <i class="fa fa-info-circle"></i> Dispersed and uncomparable information
+                        <i class="fa fa-info-circle"></i> Dispersed and not comparable information
                         </script>
                     </section>
 
                     <section data-markdown>
                         <script type="text/template">
-                        ### Need to 
+                        ### Must
 
-                        - collect datasets
-                        - analyze them given a standard workflow
+                        - Collect datasets
+                        - Analyze them given a standard workflow
 
                         <img src="images/simplified_workflow.svg" alt="Simplified_workflow" class="no-border"/>
                         </script>
@@ -134,17 +134,16 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                        ### Possible tools
+                        ### Existing tools
 
                         <small>*QIIME, MG-RAST, EBI metagenomics, MetAMOS, ...*</small>
 
                         But none of them follows all the requirements:
 
                         <ul>
-                            <li class="fragment" data-fragment-index="0">Can analyze datasets with a complete workflow</li>
-                            <li class="fragment" data-fragment-index="1">Allow gut microbiota specific databases</li>
-                            <li class="fragment" data-fragment-index="2">Combine user-friendly interface and command-line use</li>
-                            <li class="fragment" data-fragment-index="3">Have data management capabilities</li>
+                            <li class="fragment" data-fragment-index="0">Analyze datasets given the standard workflow</li>
+                            <li class="fragment" data-fragment-index="1">Use gut microbiota specific databases</li>
+                            <li class="fragment" data-fragment-index="2">Combine user-friendly interface and command-line</li>
                         </ul>
                         </script>
                     </section>
@@ -175,8 +174,7 @@
                 </section>
 
                 <section>
-                    <section>
-                        <img src="images/standard_workflow.svg" alt="Workflow" class="no-border"/>
+                    <section data-background="images/standard_workflow.svg" >
                     </section>
 
                     <section data-markdown>
@@ -203,7 +201,7 @@
 
                     <section data-markdown>
                         <script type="text/template">
-                        ### Tests of conception
+                        ### Things I tried 
 
                         <ul>
                         <li class="fragment" data-fragment-index="0">Simple Python scripts</li>
@@ -223,11 +221,13 @@
                         </script> 
                     </section>
 
+                    <section data-background="images/DealingWithFailure.jpg" >
+                    </section>
                     <section data-markdown>
                         <script type="text/template">
                             ### Galaxy
 
-                            Fit with main constraints
+                            Fit main requirements
 
                             <ul class="requirements">
                                 <li>
@@ -255,30 +255,30 @@
                         ```
                         $ git clone git@github.com:ASaiM/framework.git 
                         ```
-                        * Install the required tools found in README file
+                        * Install the required dependencies
                         * Launch the instance
                         ```
                         $ cd framework
                         $ ./src/launch_galaxy.sh
                         ```
-                        * Visualize it on [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+                        * Browse it on [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
                     </section>
 
                     <section data-markdown>
-                        ### Behind
+                        ### Behind the magic
 
                         Shell scripts to configure the instance
 
-                        * Get latest revision of Galaxy from Github  
+                        1. Get latest revision of Galaxy from Github  
 
-                        * Prepare databases and local tools
+                        2. Prepare databases and local tools
 
-                        * Link with symbolic links to 
-                            * Local configuration files
-                            * Tool files
-                            * Tool data
+                        3. Configure with 
+                            * Custom configuration files
+                            * Wanted tools
+                            * Wanted databases
 
-                        * Launch Galaxy
+                        4. Launch Galaxy
                     </section>
 
                     <section data-markdown>
@@ -289,7 +289,9 @@
 
                         * From ToolShed
 
-                        * Developed wrappers using Planemo and integrated in test Tool Shed
+                        * Developed wrappers 
+                            * Planemo
+                            * Integration in test Tool Shed
                             * [https://github.com/ASaiM/galaxytools](https://github.com/ASaiM/galaxytools)
                         </script>
                     </section>
@@ -307,7 +309,7 @@
                         * SortMeRNA ribosomal databases
                         * COG
                         * *RefSeq*
-                        * *Catalog of reference genes in the human gut microbiome from Li et al (2014)*
+                        * *Catalog of reference genes in the human gut microbiome from Li et al. (2014)*
                         * *Greengenes*
                         
                         </script>
